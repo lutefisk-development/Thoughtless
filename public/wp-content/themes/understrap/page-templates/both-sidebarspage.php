@@ -24,8 +24,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 			<div
 				class="<?php
-					if ( is_active_sidebar( 'left-sidebar' ) xor is_active_sidebar( 'right-sidebar' ) ) : ?>col-md-8<?php
-					elseif ( is_active_sidebar( 'left-sidebar' ) && is_active_sidebar( 'right-sidebar' ) ) : ?>col-md-4<?php
+					if ( is_active_sidebar( 'left-sidebar' ) xor is_active_sidebar( 'right-sidebar' ) ) : ?>col-md-9<?php
+					elseif ( is_active_sidebar( 'left-sidebar' ) && is_active_sidebar( 'right-sidebar' ) ) : ?>col-md-5<?php
 					else : ?>col-md-12<?php
 					endif; ?> content-area"
 				id="primary">

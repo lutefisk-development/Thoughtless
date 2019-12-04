@@ -7,18 +7,38 @@
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
+
+$hanna = '<a href="https://unsplash.com/@hannahmorgan7?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Hanna Morgan</a>';
+
+$unsplash = '<a href="https://unsplash.com/s/photos/fashion?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>';
+
 ?>
 
-<?php if ( is_active_sidebar( 'hero' ) || is_active_sidebar( 'statichero' ) || is_active_sidebar( 'herocanvas' ) ) : ?>
+<section id="wrapper-hero" class="wrapper-hero">
 
-	<div class="wrapper" id="wrapper-hero">
+	<article class="hero">
 
-		<?php get_template_part( 'sidebar-templates/sidebar', 'hero' ); ?>
+		<h1>here be heading</h1>
 
-		<?php get_template_part( 'sidebar-templates/sidebar', 'herocanvas' ); ?>
+		<h2>here be subheading</h2>
 
-		<?php get_template_part( 'sidebar-templates/sidebar', 'statichero' ); ?>
+		<small>
+			<?php
+				printf(
+					__('Photo by %s on %s', 'understrap'),
+					$hanna, $unsplash
+				); 
+			?>
+		</small>
 
-	</div>
+		<!-- button will be displayed only if admin has defined a valid link-->
 
-<?php endif;
+	</article>
+
+</section>
+
+<!-- ACF spesific styles -->
+<style>
+
+
+</style>

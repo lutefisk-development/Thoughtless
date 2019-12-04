@@ -66,6 +66,11 @@ if ( ! function_exists( 'understrap_setup' ) ) {
 		add_theme_support( 'post-thumbnails' );
 
 		/*
+		 * Adding picture size for Hero image
+		 */
+		add_image_size('hero-image', 1900, 500, false);
+
+		/*
 		 * Adding support for Widget edit icons in customizer
 		 */
 		add_theme_support( 'customize-selective-refresh-widgets' );

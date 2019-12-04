@@ -1,0 +1,55 @@
+/**
+* Styles spesific for WCPS addon
+*/
+
+.layer-content {
+    .wcps-items-title {
+        a {
+            color: $lightgreen!important;
+        }
+    }
+    .wcps-items-excerpt {
+        a {
+            color: $lightgreen!important;
+        }
+    }
+    .wcps-items-category {
+        a {
+            color: $lightgreen!important;
+        }
+    }
+    .wcps-items-price {
+        color: $lightgreen!important;
+    }
+    .wcps-items-sale-count {
+        color: $lightgreen!important;
+    }
+    .wcps-items-cart {
+
+        .add-to-cart-container {
+            a {
+                border-color: $lightgreen;
+                color: $lightgreen;
+            }
+
+            a:hover {
+                background-color: $darkgreen;
+                color: $lightgreen;
+            }
+        }
+
+        .add_to_cart_inline {
+            display: none;
+            input {
+                display: none;
+            }
+        }
+
+        p {
+            display: none;
+            input {
+                display: none;
+            }
+        }
+    }
+}

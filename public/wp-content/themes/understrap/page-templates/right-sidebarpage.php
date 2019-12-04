@@ -21,7 +21,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<div class="row">
 
 			<div
-				class="<?php if ( is_active_sidebar( 'right-sidebar' ) ) : ?>col-md-8<?php else : ?>col-md-12<?php endif; ?> content-area"
+				class="<?php if ( is_active_sidebar( 'right-sidebar' ) ) : ?>col-md-9<?php else : ?>col-md-12<?php endif; ?> content-area"
 				id="primary">
 
 				<main class="site-main" id="main" role="main">
