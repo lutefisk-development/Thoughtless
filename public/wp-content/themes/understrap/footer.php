@@ -27,7 +27,12 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 					<div class="site-info">
 
-						<?php understrap_site_info(); ?>
+						
+						<h1 class="custom-footer">
+
+							<?php _e('Made by Thoughless Developers &copy; 2019', 'understrap'); ?>
+
+						</h1>
 
 					</div><!-- .site-info -->
 
