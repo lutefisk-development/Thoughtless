@@ -1,0 +1,34 @@
+/**
+* Styles for the hero:
+*/
+
+#front-page-wrapper {
+    
+    .hero,
+    .insta {
+        border: 3px solid red;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .kampanj {
+        border: 3px solid red;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .best {
+        border: 3px solid red;
+        height: 750px;
+        max-width: 500px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
