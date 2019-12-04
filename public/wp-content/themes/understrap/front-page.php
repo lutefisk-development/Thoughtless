@@ -8,32 +8,14 @@ if(!defined('ABSPATH')) {
 }
 
 get_header();
+get_template_part('global-templates/hero-frontpage');
 
-$kampanj = new WP_Query([
-    'post_type' => 'product',
-    'posts_per_page' => -1,
-    'product_cat' => 'featured'
-]);
-
-
+// REMEMBER TO COMMENT THIS OUT WHEN GOING LIVE! MIGHT NOPT WORK
+echo do_shortcode("[wcps id='104']");
 ?>
-
-<?php if ($kampanj->have_posts()): ?>
-    <?php while ($kampanj->have_posts()): $kampanj->the_post()?>
-        <p><?php the_title(); ?></p>
-        <?php echo woocommerce_get_product_thumbnail(); ?>
-    <?php endwhile;?>
-<?php endif;?>
-<?php wp_reset_postdata();?>
 
 
 <div id="front-page-wrapper">
-    <div class="hero">
-        <h1>HERE BE HERO</h1>
-    </div>
-    <div class="kampanj">
-        <h1>HERE BE KAMPANJ</h1>
-    </div>
     <div class="best">
         <h1>HERE BE BESTSÄLJARE</h1>
     </div>
@@ -44,8 +26,3 @@ $kampanj = new WP_Query([
 
 <?php
 get_footer();
-?>
-
-
-
-
