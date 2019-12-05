@@ -32,6 +32,7 @@
 # mu-plugins, plugins, and themes directories
 wp-content/*
 !wp-content/mu-plugins/
+!wp-content/plugins/
 
 !wp-content/themes/
 !wp-content/uploads/
@@ -40,6 +41,7 @@ wp-content/*
 # unless explicitly whitelisted at the end of this file
 wp-content/themes/*
 wp-content/uploads/*
+wp-content/plugins/*
 
 # ignore all files starting with . or ~
 .*
@@ -113,4 +115,6 @@ Thumbs.db
 !wp-content/uploads/sql/
 !wp-content/uploads/sql/*
 
+# Instagram plugin
+!wp-content/plugins/instagram
 
