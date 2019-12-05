@@ -78,6 +78,7 @@ class Instagram {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->register_widget();
 
 	}
 
@@ -124,6 +125,10 @@ class Instagram {
 
 		$this->loader = new Instagram_Loader();
 
+		/**
+		 * The class responsible for defining all actions in the instagram widget
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ )) . 'includes/class-instagram-widget.php';
 	}
 
 	/**
@@ -173,6 +178,16 @@ class Instagram {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
+	}
+
+	/**
+	 * Register the widget
+	 */
+
+	public function register_widget(){
+		add_action('widgets_init', function(){
+			register_widget('Instagramwidget');
+		});
 	}
 
 	/**

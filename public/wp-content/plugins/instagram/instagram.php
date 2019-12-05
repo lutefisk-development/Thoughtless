@@ -14,7 +14,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Instagram
- * Plugin URI:        https://wcms18.hiveresistance.com/
+ * Plugin URI:        https://thoughtlessstore.com/
  * Description:       This plugin shows images from Instagram
  * Version:           1.0.0
  * Author:            Joakim Malmberg / Tillmann Weimer 
@@ -63,6 +63,12 @@ register_deactivation_hook( __FILE__, 'deactivate_instagram' );
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-instagram.php';
+
+/**
+ * The class for the instagram widget
+ */
+require plugin_dir_path( __FILE__ ) . 'includes/class-instagram-widget.php';
+
 
 /**
  * Begins execution of the plugin.
