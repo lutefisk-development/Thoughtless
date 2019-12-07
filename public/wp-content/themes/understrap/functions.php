@@ -18,6 +18,8 @@ $understrap_includes = array(
 	'/hooks.php',                           // Custom hooks.
 	'/extras.php',                          // Custom functions that act independently of the theme templates.
 	'/custom-post-types.php',               // Load Custom Post Types.
+	'/acf.php',                             // Load ACF Plugin.
+	'/acf-fieldgroups.php',                 // Load ACF Field Groups.
 	'/customizer.php',                      // Customizer additions.
 	'/custom-comments.php',                 // Custom Comments file.
 	'/jetpack.php',                         // Load Jetpack compatibility file.
