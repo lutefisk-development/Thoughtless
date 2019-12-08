@@ -15,32 +15,55 @@ class Instagramwidget extends WP_Widget{
         );
     }
 
+        /**
+     * @param $api_url
+     * @return mixed
+     */
+    public function curl_connect( $api_url ){
+      $connection_c = curl_init(); // initializing
+      curl_setopt( $connection_c, CURLOPT_URL, $api_url ); // API URL to connect
+      curl_setopt( $connection_c, CURLOPT_RETURNTRANSFER, 1 ); // return the result, do not print
+      curl_setopt( $connection_c, CURLOPT_TIMEOUT, 20 );
+      $json_return = curl_exec( $connection_c ); // connect and get json data
+      curl_close( $connection_c ); // close connection
+      return json_decode( $json_return ); // decode and return
+    }
+
     /**
      * Front End display of Widget
      */
     public function widget($args, $instance){
         extract($args);
-        //$title = apply_filters('widget_title', $instance['title']);
+        $title = apply_filters('widget_title', $instance['title']);
         echo $before_widget;
         if (! empty($title)) {
-        echo $before_title . $title . $after_title;
+            echo $before_title . $title . $after_title;
         }
+        $access_token = 'ACCESS_TOKEN';
+
+        $instagram_images = $this->curl_connect("https://graph.instagram.com/" . 'me' . '?fields=account_type,username,media&access_token=' . $access_token);
+
+        $images = $instagram_images->media->data;
+          ?>
+            <div class="container">
+              <div class="col-4">
+                <div class="row">
+                  <?php
+                    foreach( $images as $image) {
+                      echo '<br>';
+                      $images_url = $this->curl_connect("https://graph.instagram.com/" . $image->id . '?fields=media_url,permalink&access_token=' . $access_token);
+                      ?>
+                        <img src="<?php echo $images_url->media_url; ?>" alt="insta_image" height="420" width="420">
+                      <?php
+                    }
+                  ?>
+                </div>
+              </div>
+            </div>
+          <?php
+
         //echo $instance['content'];
         echo $after_widget;
-    
-    ?>
-    <div class="container">
-        <div class="col-4">
-            <h3>Instagram</h3>
-            <div class="row">
-                <p><?php _e('Popular pictures', 'instagram'); ?></p><br>
-                <div class="popimages">
-                    <div></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php
     }
 
     /**
@@ -56,19 +79,16 @@ class Instagramwidget extends WP_Widget{
     /**
      * The field where you can insert your Instagram API token
      */
+
         ?>
-        <p>
-        <label for="<?php echo $this->get_field_name('title'); ?>">
-            <?php _e('Title:'); ?>
-        </label>
-        <input 
-        class="widefat" 
-        id="<?php echo $this->get_field_id('title'); ?>" 
-        name="<?php echo $this->get_field_name('title'); ?>" 
-        type="text" 
-        value="<?php echo esc_attr($title); ?>" />
-        </p>
-        <?php
+  <p>
+    <label for="<?php echo $this->get_field_name('title'); ?>">
+      <?php _e('Title:'); ?>
+    </label>
+    <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>"
+      name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+  </p>
+  <?php
     /**
      * /The field where you can insert your Instagram API token
      */
