@@ -24,7 +24,7 @@ $link = get_field('hero-link');
 
 		<!-- button will be displayed only if admin has defined a valid link-->
 		<?php if($link) : ?>
-			<a href="" class="btn btn-primary"><?php echo the_field('hero-button-text'); ?></a>
+			<a href="<?php echo $link; ?>" class="btn btn-primary"><?php echo the_field('hero-button-text'); ?></a>
 		<?php endif; ?>
 
 		<small>

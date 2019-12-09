@@ -19,17 +19,21 @@
         h2 {
             margin-bottom: 4rem;
         }
-        
-        a {
-            color: white;
+
+        .btn {
             background-color: $green;
             border: none;
             border-radius: 20px;
         }
 
-        a:hover {
+        .btn:hover {
             color: $lightgreen;
             background-color: white;
+        }
+        
+        a {
+            color: white;
+            text-decoration: none;
         }
 
         small {
