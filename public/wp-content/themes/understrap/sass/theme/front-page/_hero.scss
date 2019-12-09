@@ -22,10 +22,14 @@
         
         a {
             color: white;
+            background-color: $green;
+            border: none;
+            border-radius: 20px;
         }
 
         a:hover {
             color: $lightgreen;
+            background-color: white;
         }
 
         small {

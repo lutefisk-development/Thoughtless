@@ -19,8 +19,8 @@ $link = get_field('hero-link');
 
 <section id="wrapper-hero-frontpage" class="wrapper-hero">
 	<article class="hero">
-		<h1>here be heading</h1>
-		<h2>here be subheading</h2>
+		<h1><?php the_field('hero-heading'); ?></h1>
+		<h2><?php the_field('hero-subheading');?></h2>
 
 		<!-- button will be displayed only if admin has defined a valid link-->
 		<?php if($link) : ?>
