@@ -33,6 +33,7 @@ class Instagramwidget extends WP_Widget{
      * Front End display of Widget
      */
     public function widget($args, $instance){
+
         extract($args);
         $title = apply_filters('widget_title', $instance['title']);
         $instagram_token = apply_filters('widget_title', $instance['instagram_token']);
@@ -47,14 +48,15 @@ class Instagramwidget extends WP_Widget{
         $images = $instagram_images->media->data;
           ?>
             <div class="container">
-              <div class="col-4">
-                <div class="row">
+              <div class="row-4">
+                <div>
                   <?php
                     foreach( $images as $image) {
-                      echo '<br>';
                       $images_url = $this->curl_connect("https://graph.instagram.com/" . $image->id . '?fields=media_url,permalink&access_token=' . $access_token);
                       ?>
-                        <img src="<?php echo $images_url->media_url; ?>" alt="insta_image" height="420" width="420">
+                        <a href="<?php echo $images_url->permalink; ?>" target="_blank">
+                          <img src="<?php echo $images_url->media_url; ?>" alt="insta_image" height="250" width="250">
+                        </a>
                       <?php
                     }
                   ?>
@@ -107,8 +109,15 @@ class Instagramwidget extends WP_Widget{
           </label>
           <input class="widefat" id="<?php echo $this->get_field_id('instagram_token'); ?>"
             name="<?php echo $this->get_field_name('instagram_token'); ?>" type="text" value="<?php echo esc_attr($instagram_token); ?>" />
-        </p>        
+        </p>
+<!-- 
+        <a href="https://api.instagram.com/oauth/authorize?app_id=605693496868185&redirect_uri=https://thoughtless.test/&scope=user_profile,user_media&response_type=code" target="_blank">
+          Get code for access token
+        <a> -->
       <?php
+
+
+
 
 
     }
