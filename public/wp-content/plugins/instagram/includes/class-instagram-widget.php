@@ -41,29 +41,19 @@ class Instagramwidget extends WP_Widget{
         if (! empty($title)) {
             echo $before_title . $title . $after_title;
         }
-        $access_token = $instagram_token;
+        ?>
 
-        $instagram_images = $this->curl_connect("https://graph.instagram.com/" . 'me' . '?fields=account_type,username,media&access_token=' . $access_token);
 
-        $images = $instagram_images->media->data;
-          ?>
-            <div class="container">
-              <div class="row-4">
-                <div>
-                  <?php
-                    foreach( $images as $image) {
-                      $images_url = $this->curl_connect("https://graph.instagram.com/" . $image->id . '?fields=media_url,permalink&access_token=' . $access_token);
-                      ?>
-                        <a href="<?php echo $images_url->permalink; ?>" target="_blank">
-                          <img src="<?php echo $images_url->media_url; ?>" alt="insta_image" height="250" width="250">
-                        </a>
-                      <?php
-                    }
-                  ?>
-                </div>
-              </div>
-            </div>
-          <?php
+        <div class="content">
+				<span class="loading">Loading...</span>
+			</div>
+      <?php
+        // $access_token = $instagram_token;
+
+        // $instagram_images = $this->curl_connect("https://graph.instagram.com/" . 'me' . '?fields=account_type,username,media&access_token=' . $access_token);
+
+
+
 
         //echo $instance['content'];
         echo $after_widget;

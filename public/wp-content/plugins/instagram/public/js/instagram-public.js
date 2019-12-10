@@ -1,32 +1,47 @@
-(function( $ ) {
-	'use strict';
+(function ($) {
+  'use strict';
 
-	/**
-	 * All of the code for your public-facing JavaScript source
-	 * should reside in this file.
-	 *
-	 * Note: It has been assumed you will write jQuery code here, so the
-	 * $ function reference has been prepared for usage within the scope
-	 * of this function.
-	 *
-	 * This enables you to define handlers, for when the DOM is ready:
-	 *
-	 * $(function() {
-	 *
-	 * });
-	 *
-	 * When the window is loaded:
-	 *
-	 * $( window ).load(function() {
-	 *
-	 * });
-	 *
-	 * ...and/or other possibilities.
-	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
-	 */
+  $(document).ready(function () {
+    $('.widget_instagram').each(function (i, widget) {
+      $.post(
+        get_instagram.ajax_url, {
+          action: 'instagram__get'
+        }
+      ).done(function (instagram) {
+        var images;
+        var all_images = "";
+        var output = "";
+        var img = "";
+        images = instagram.data.instagram.data;
 
-})( jQuery );
+        images.forEach(image => {
+
+          // console.log(image.id);
+          output += image.id;
+
+          $.ajax({
+            type: "GET",
+            url: 'https://graph.instagram.com/' + image.id + '?fields=media_url,permalink&access_token=',
+            crossDomain: true,
+            success: function (response) {
+              console.log(response.media_url);
+              img = response.media_url;
+
+              all_images += '<img src="' + img + '" alt="test">';
+
+              $(widget).find('.content').html(all_images);
+
+            },
+            dataType: "jsonp" //set to JSONP, is a callback
+          });
+
+
+        });
+
+      }).fail(function (error) {
+        console.log("something went wrong!", error);
+      });
+    });
+  });
+
+})(jQuery);
