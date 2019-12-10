@@ -80,7 +80,7 @@ class Instagramwidget extends WP_Widget{
           $title = __('New title', 'instagram');
       }
     /**
-     * The field where you can insert your Instagram API token
+     * The field where you can insert your Instagram username
      */
       if (isset($instance['instagram_token'])) {
         $instagram_token = $instance['instagram_token'];
@@ -100,7 +100,27 @@ class Instagramwidget extends WP_Widget{
         </p>       
       <?php
     /**
-     * /The field where you can insert your Instagram API token
+     * /The field where you can insert your Instagram username
+     */
+    /**
+     * /The field where you can insert your Instagram password
+     */
+    ?>
+        <p>
+        <label for="<?php echo $this->get_field_name('title'); ?>">
+            <?php _e('Password:'); ?>
+        </label>
+        <input 
+        class="widefat" 
+        id="<?php echo $this->get_field_id('title'); ?>" 
+        name="<?php echo $this->get_field_name('title'); ?>" 
+        type="password" 
+        value="<?php echo esc_attr($title); ?>" />
+        </p>
+        <?php
+
+    /**
+     * /The field where you can insert your Instagram password
      */
       ?>
         <p>
@@ -126,7 +146,7 @@ class Instagramwidget extends WP_Widget{
      */
 
      /**
-      * The Method which saves your insertef Instagram API token
+      * The Method which saves your login
       */
     public function update($new_instance, $old_instance){
         $instance = [];
