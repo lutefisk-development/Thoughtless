@@ -33,30 +33,30 @@ class Instagramwidget extends WP_Widget{
      * Front End display of Widget
      */
     public function widget($args, $instance){
-
         extract($args);
         $title = apply_filters('widget_title', $instance['title']);
         $instagram_token = apply_filters('widget_title', $instance['instagram_token']);
+        $nr_of_images = apply_filters('widget_title', $instance['nr_of_images']);
+
         echo $before_widget;
         if (! empty($title)) {
             echo $before_title . $title . $after_title;
         }
         ?>
 
+        <div class="instagram"  data-token="<?php echo $instagram_token; ?>" data-nr_of_images="<?php echo $nr_of_images; ?>"></div>
 
         <div class="content">
-				<span class="loading">Loading...</span>
-			</div>
-      <?php
-        // $access_token = $instagram_token;
+          <span class="loading">Loading...</span>
+        </div>
 
-        // $instagram_images = $this->curl_connect("https://graph.instagram.com/" . 'me' . '?fields=account_type,username,media&access_token=' . $access_token);
-
-
+        <?php
 
 
         //echo $instance['content'];
         echo $after_widget;
+
+        return $instagram_token;
     }
 
     /**
@@ -70,7 +70,7 @@ class Instagramwidget extends WP_Widget{
           $title = __('New title', 'instagram');
       }
     /**
-     * The field where you can insert your Instagram username
+     * The field where you can insert your Instagram token
      */
       if (isset($instance['instagram_token'])) {
         $instagram_token = $instance['instagram_token'];
@@ -78,57 +78,46 @@ class Instagramwidget extends WP_Widget{
       else {
         $instagram_token = __('New instagram_token', 'instagram');
       }
+        /**
+         * The field where you can insert your number of images
+         */
+        if (isset($instance['nr_of_images'])) {
+            $nr_of_images = $instance['nr_of_images'];
+        }
+        else {
+            $nr_of_images = __('4', 'instagram');
+        }
 
 
       ?>
         <p>
           <label for="<?php echo $this->get_field_name('title'); ?>">
-            <?php _e('Title:'); ?>
+            <?php _e('Title:', 'instagram'); ?>
           </label>
           <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>"
             name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
-        </p>       
-      <?php
-    /**
-     * /The field where you can insert your Instagram username
-     */
-    /**
-     * /The field where you can insert your Instagram password
-     */
-    ?>
-        <p>
-        <label for="<?php echo $this->get_field_name('title'); ?>">
-            <?php _e('Password:'); ?>
-        </label>
-        <input 
-        class="widefat" 
-        id="<?php echo $this->get_field_id('title'); ?>" 
-        name="<?php echo $this->get_field_name('title'); ?>" 
-        type="password" 
-        value="<?php echo esc_attr($title); ?>" />
         </p>
-        <?php
-
-    /**
-     * /The field where you can insert your Instagram password
-     */
-      ?>
         <p>
           <label for="<?php echo $this->get_field_name('instagram_token'); ?>">
-            <?php _e('Instagram Token:'); ?>
+            <?php _e('Instagram Token:', 'instagram'); ?>
           </label>
           <input class="widefat" id="<?php echo $this->get_field_id('instagram_token'); ?>"
             name="<?php echo $this->get_field_name('instagram_token'); ?>" type="text" value="<?php echo esc_attr($instagram_token); ?>" />
         </p>
-<!-- 
-        <a href="https://api.instagram.com/oauth/authorize?app_id=605693496868185&redirect_uri=https://thoughtless.test/&scope=user_profile,user_media&response_type=code" target="_blank">
-          Get code for access token
-        <a> -->
+        <p>
+            <label for="<?php echo $this->get_field_name('nr_of_images'); ?>">
+                <?php _e('Number of images:', 'instagram'); ?>
+            </label>
+            <input class="widefat" id="<?php echo $this->get_field_id('nr_of_images'); ?>"
+                   name="<?php echo $this->get_field_name('nr_of_images'); ?>" type="text" value="<?php echo esc_attr($nr_of_images); ?>" />
+        </p>
+<!--        --><?php
+//        $url = get_site_url();
+//        ?>
+<!--        <a href="https://api.instagram.com/oauth/authorize?app_id=605693496868185&redirect_uri=--><?php //echo $url; ?><!--/&scope=user_profile,user_media&response_type=code" target="_blank">-->
+<!--          Get code for access token-->
+<!--        <a>-->
       <?php
-
-
-
-
 
     }
     /**
@@ -149,8 +138,11 @@ class Instagramwidget extends WP_Widget{
         $instance['instagram_token'] = (!empty($new_instance['instagram_token'])) 
         ? strip_tags($new_instance['instagram_token']) 
         : '';
-        
+
+        $instance['nr_of_images'] = (!empty($new_instance['nr_of_images']))
+        ? strip_tags($new_instance['nr_of_images'])
+        : '';
+
         return $instance;
     }
-
 }

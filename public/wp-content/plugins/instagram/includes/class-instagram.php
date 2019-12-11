@@ -78,10 +78,8 @@ class Instagram {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-    $this->register_widget();
-    
-    // register ajax actions
-		$this->register_ajax_actions();
+        $this->register_widget();
+
 
 	}
 
@@ -191,41 +189,8 @@ class Instagram {
 		add_action('widgets_init', function(){
 			register_widget('Instagramwidget');
 		});
-  }
-  
+    }
 
-  	/**
-	 * Register ajax actions
-	 *
-	 * @since    1.0.0
-	 */
-	public function register_ajax_actions() {
-		//Register action 'instagram__get'
-		add_action('wp_ajax_instagram__get', [$this, 'ajax_instagram__get']);
-		add_action('wp_ajax_nopriv_instagram__get', [$this, 'ajax_instagram__get']);
-  }
-  
-  	/**
-	 * Respond to ajax action 'ajax_instagram__get'
-	 *
-	 * @since    1.0.0
-	 */
-	public function ajax_instagram__get() {
-		// Get random fox image
-		$response_instagram_user = wp_remote_get('https://graph.instagram.com/me?fields=account_type,username,media&access_token=');
-		if(is_wp_error( $response_instagram_user ) || wp_remote_retrieve_response_code( $response_instagram_user ) != 200){
-			wp_send_json_error([
-				'error_code' => wp_remote_retrieve_response_code( $response_instagram_user ),
-				'error_msg' => wp_remote_retrieve_response_message( $response_instagram_user ),
-			]);
-		}
-    $content_instagram_user = json_decode(wp_remote_retrieve_body( $response_instagram_user ));
-
-    wp_send_json_success([
-      'instagram' => $content_instagram_user->media
-		]);
-
-	}
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.

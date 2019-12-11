@@ -1,45 +1,40 @@
 (function ($) {
   'use strict';
-
   $(document).ready(function () {
     $('.widget_instagram').each(function (i, widget) {
-      $.post(
-        get_instagram.ajax_url, {
-          action: 'instagram__get'
-        }
-      ).done(function (instagram) {
-        var images;
-        var all_images = "";
-        var output = "";
-        var img = "";
-        images = instagram.data.instagram.data;
+      const instagram = document.querySelector('.instagram');
+      var token = instagram.dataset.token;
+      var nr_of_images = instagram.dataset.nr_of_images;
+      $.ajax({
+        type: "GET",
+        url: 'https://graph.instagram.com/me?fields=account_type,username,media&access_token=' + token,
+        crossDomain: true,
+        success: function (instagram) {
+          var images  = instagram.media.data;
+          var all_images = "";
+          var i = 0;
 
-        images.forEach(image => {
+          images.forEach(image => {
+            if(nr_of_images <= i) {
+              return;
+            }
+            i++;
+            $.ajax({
+              type: "GET",
+              url: 'https://graph.instagram.com/' + image.id + '?fields=media_url,permalink&access_token=' + token,
+              crossDomain: true,
+              success: function (response) {
 
-          // console.log(image.id);
-          output += image.id;
+                all_images += '<a href="' + response.permalink + '" target="_blank">';
+                all_images += '<img src="' + response.media_url + '" alt="instagram image"  height="250" width="250">';
+                all_images += '</a>';
 
-          $.ajax({
-            type: "GET",
-            url: 'https://graph.instagram.com/' + image.id + '?fields=media_url,permalink&access_token=',
-            crossDomain: true,
-            success: function (response) {
-              console.log(response.media_url);
-              img = response.media_url;
-
-              all_images += '<img src="' + img + '" alt="test">';
-
-              $(widget).find('.content').html(all_images);
-
-            },
-            dataType: "jsonp" //set to JSONP, is a callback
+                $(widget).find('.content').html(all_images);
+              },
+              dataType: "jsonp" //set to JSONP, is a callback
+            });
           });
-
-
-        });
-
-      }).fail(function (error) {
-        console.log("something went wrong!", error);
+        }
       });
     });
   });
