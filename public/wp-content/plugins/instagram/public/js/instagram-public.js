@@ -4,6 +4,7 @@
     $('.widget_instagram').each(function (i, widget) {
       const instagram = document.querySelector('.instagram');
       var token = instagram.dataset.token;
+      var image_size = instagram.dataset.image_size;
       var nr_of_images = instagram.dataset.nr_of_images;
       $.ajax({
         type: "GET",
@@ -26,7 +27,7 @@
               success: function (response) {
 
                 all_images += '<a href="' + response.permalink + '" target="_blank">';
-                all_images += '<img src="' + response.media_url + '" alt="instagram image"  height="250" width="250">';
+                all_images += '<img src="' + response.media_url + '" alt="instagram image" height="' + image_size + '" width="' + image_size + '">';
                 all_images += '</a>';
 
                 $(widget).find('.content').html(all_images);
