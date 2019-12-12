@@ -27,7 +27,7 @@
               success: function (response) {
 
                 all_images += '<a href="' + response.permalink + '" target="_blank">';
-                all_images += '<img src="' + response.media_url + '" alt="instagram image" height="' + image_size + '" width="' + image_size + '">';
+                all_images += '<img class="instimage" src="' + response.media_url + '" alt="instagram image" height="' + image_size + '" width="' + image_size + '">';
                 all_images += '</a>';
 
                 $(widget).find('.content').html(all_images);

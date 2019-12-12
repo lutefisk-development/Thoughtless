@@ -2,3 +2,11 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+ 
+ .instimage {
+     padding: 15px 15px;
+     box-shadow: 5px 10px 18px #888888;
+ }
+
+ 

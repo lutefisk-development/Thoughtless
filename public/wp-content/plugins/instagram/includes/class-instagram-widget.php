@@ -76,7 +76,7 @@ class Instagramwidget extends WP_Widget{
           data-image_size="<?php echo $image_size; ?>">
         </div>
 
-        <div class="content">
+        <div class="content mt-3">
           <span class="loading">Loading...</span>
         </div>
 
@@ -230,9 +230,9 @@ class Instagramwidget extends WP_Widget{
         <?php
         $url = get_site_url();
         ?>
-        <a href="https://api.instagram.com/oauth/authorize?app_id=605693496868185&redirect_uri=<?php echo $url; ?>/wp-admin/widgets.php&scope=user_profile,user_media&response_type=code">
-          Get New Instagram Token
-        <a>
+          <a href="https://api.instagram.com/oauth/authorize?app_id=605693496868185&redirect_uri=<?php echo $url; ?>/wp-admin/widgets.php&scope=user_profile,user_media&response_type=code">
+            Get New Instagram Token
+        </a>
         <?php
 
 
