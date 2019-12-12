@@ -58,13 +58,6 @@ class Instagramwidget extends WP_Widget{
      * Front End display of Widget
      */
     public function widget($args, $instance){
-
-        var_dump(get_site_url());
-
-        var_dump(get_admin_url());
-        $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        var_dump($actual_link);
-
         extract($args);
         $title = apply_filters('widget_title', $instance['title']);
         $instagram_token = apply_filters('widget_title', $instance['instagram_token']);
@@ -189,10 +182,6 @@ class Instagramwidget extends WP_Widget{
     /**
      * /Front End for displaying widget in wp-admin
      */
-
-     /**
-      * The Method which saves your login
-      */
     public function update($new_instance, $old_instance){
         $instance = [];
         $instance['title'] = (!empty($new_instance['title'])) 
