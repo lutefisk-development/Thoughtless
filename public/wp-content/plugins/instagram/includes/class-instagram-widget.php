@@ -88,21 +88,24 @@ class Instagramwidget extends WP_Widget{
       $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       $url = explode('code=', $actual_link);
       $code = $url[1];
+      $app_id = apply_filters('widget_title', $instance['app_id']);
+      $app_secret = apply_filters('widget_title', $instance['app_secret']);
+      $site_url = get_site_url();
 
       if($code) {
 
         $uri = 'https://api.instagram.com/oauth/access_token'; 
         $data = [
-          'app_id' => '605693496868185', 
-          'app_secret' => 'd13ff606d23745d00866a0283b2bef92', 
+          'app_id' => $app_id, 
+          'app_secret' => $app_secret, 
           'grant_type' => 'authorization_code', 
-          'redirect_uri' => 'https://thoughtless.test/wp-admin/widgets.php',
+          'redirect_uri' => $site_url . '/wp-admin/widgets.php',
           'code' => $code
         ];
         $obj_one = $this->curl_post($uri, $data);
         $token_one = $obj_one->access_token;
         if($token_one) {
-          $uri = 'https://graph.instagram.com/access_token?grant_type=ig_exchange_token&&client_secret=d13ff606d23745d00866a0283b2bef92&access_token='. $token_one; 
+          $uri = 'https://graph.instagram.com/access_token?grant_type=ig_exchange_token&&client_secret='. $app_secret .'&access_token='. $token_one; 
           $obj_two = $this->curl_get($uri);
           $token_two = $obj_two->access_token;
           if($token_two) {
@@ -119,7 +122,9 @@ class Instagramwidget extends WP_Widget{
       }
 
         
-
+      /**
+     * The field where you can insert your title
+     */
       if (isset($instance['title'])) {
           $title = $instance['title'];
       }
@@ -135,15 +140,33 @@ class Instagramwidget extends WP_Widget{
       else {
         $instagram_token = __('New instagram_token', 'instagram');
       }
-        /**
-         * The field where you can insert your Instagram token
-         */
-        if (isset($instance['nr_of_images'])) {
-            $nr_of_images = $instance['nr_of_images'];
-        }
-        else {
-            $nr_of_images = __('4', 'instagram');
-        }
+      /**
+       * The field where you can insert your Number of images
+       */
+      if (isset($instance['nr_of_images'])) {
+          $nr_of_images = $instance['nr_of_images'];
+      }
+      else {
+          $nr_of_images = __('4', 'instagram');
+      }
+      /**
+       * The field where you can insert your App id
+       */
+      if (isset($instance['app_id'])) {
+          $app_id = $instance['app_id'];
+      }
+      else {
+          $app_id = __('App Id', 'instagram');
+      }
+      /**
+       * The field where you can insert your App secret
+       */
+      if (isset($instance['app_secret'])) {
+          $app_secret = $instance['app_secret'];
+      }
+      else {
+          $app_secret = __('App Secret', 'instagram');
+      }
 
 
       ?>
@@ -168,6 +191,20 @@ class Instagramwidget extends WP_Widget{
             <input class="widefat" id="<?php echo $this->get_field_id('nr_of_images'); ?>"
                    name="<?php echo $this->get_field_name('nr_of_images'); ?>" type="text" value="<?php echo esc_attr($nr_of_images); ?>" />
         </p>
+        <p>
+            <label for="<?php echo $this->get_field_name('app_id'); ?>">
+                <?php _e('App Id:', 'instagram'); ?>
+            </label>
+            <input class="widefat" id="<?php echo $this->get_field_id('app_id'); ?>"
+                   name="<?php echo $this->get_field_name('app_id'); ?>" type="text" value="<?php echo esc_attr($app_id); ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_name('app_secret'); ?>">
+                <?php _e('App Secret:', 'instagram'); ?>
+            </label>
+            <input class="widefat" id="<?php echo $this->get_field_id('app_secret'); ?>"
+                   name="<?php echo $this->get_field_name('app_secret'); ?>" type="text" value="<?php echo esc_attr($app_secret); ?>" />
+        </p>
         
         <?php
         $url = get_site_url();
@@ -187,15 +224,17 @@ class Instagramwidget extends WP_Widget{
         $instance['title'] = (!empty($new_instance['title'])) 
         ? strip_tags($new_instance['title']) 
         : '';
-        /**
-        * /The Method which saves your insertef Instagram API token
-        */
         $instance['instagram_token'] = (!empty($new_instance['instagram_token'])) 
         ? strip_tags($new_instance['instagram_token']) 
         : '';
-
         $instance['nr_of_images'] = (!empty($new_instance['nr_of_images']))
         ? strip_tags($new_instance['nr_of_images'])
+        : '';
+        $instance['app_id'] = (!empty($new_instance['app_id']))
+        ? strip_tags($new_instance['app_id'])
+        : '';
+        $instance['app_secret'] = (!empty($new_instance['app_secret']))
+        ? strip_tags($new_instance['app_secret'])
         : '';
 
         return $instance;
