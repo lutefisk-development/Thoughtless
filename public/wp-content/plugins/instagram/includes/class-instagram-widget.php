@@ -62,6 +62,7 @@ class Instagramwidget extends WP_Widget{
         $title = apply_filters('widget_title', $instance['title']);
         $instagram_token = apply_filters('widget_title', $instance['instagram_token']);
         $nr_of_images = apply_filters('widget_title', $instance['nr_of_images']);
+        $image_size = apply_filters('widget_title', $instance['image_size']);
 
         echo $before_widget;
         if (! empty($title)) {
@@ -69,7 +70,11 @@ class Instagramwidget extends WP_Widget{
         }
         ?>
 
-        <div class="instagram"  data-token="<?php echo $instagram_token; ?>" data-nr_of_images="<?php echo $nr_of_images; ?>"></div>
+        <div class="instagram"  
+          data-token="<?php echo $instagram_token; ?>" 
+          data-nr_of_images="<?php echo $nr_of_images; ?>" 
+          data-image_size="<?php echo $image_size; ?>">
+        </div>
 
         <div class="content">
           <span class="loading">Loading...</span>
@@ -150,6 +155,15 @@ class Instagramwidget extends WP_Widget{
           $nr_of_images = __('4', 'instagram');
       }
       /**
+       * Change the Image size
+       */
+      if (isset($instance['image_size'])) {
+          $image_size = $instance['image_size'];
+      }
+      else {
+          $image_size = '250';
+      }
+      /**
        * The field where you can insert your App id
        */
       if (isset($instance['app_id'])) {
@@ -192,6 +206,13 @@ class Instagramwidget extends WP_Widget{
                    name="<?php echo $this->get_field_name('nr_of_images'); ?>" type="text" value="<?php echo esc_attr($nr_of_images); ?>" />
         </p>
         <p>
+            <label for="<?php echo $this->get_field_name('image_size'); ?>">
+                <?php _e('Image Size:', 'instagram'); ?>
+            </label>
+            <input class="widefat" id="<?php echo $this->get_field_id('image_size'); ?>"
+                   name="<?php echo $this->get_field_name('image_size'); ?>" type="text" value="<?php echo esc_attr($image_size); ?>" />
+        </p>
+        <p>
             <label for="<?php echo $this->get_field_name('app_id'); ?>">
                 <?php _e('App Id:', 'instagram'); ?>
             </label>
@@ -229,6 +250,9 @@ class Instagramwidget extends WP_Widget{
         : '';
         $instance['nr_of_images'] = (!empty($new_instance['nr_of_images']))
         ? strip_tags($new_instance['nr_of_images'])
+        : '';
+        $instance['image_size'] = (!empty($new_instance['image_size']))
+        ? strip_tags($new_instance['image_size'])
         : '';
         $instance['app_id'] = (!empty($new_instance['app_id']))
         ? strip_tags($new_instance['app_id'])
