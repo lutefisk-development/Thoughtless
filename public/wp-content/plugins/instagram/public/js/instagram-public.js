@@ -1,32 +1,42 @@
-(function( $ ) {
-	'use strict';
+(function ($) {
+  'use strict';
+  $(document).ready(function () {
+    $('.widget_instagram').each(function (i, widget) {
+      const instagram = document.querySelector('.instagram');
+      var token = instagram.dataset.token;
+      var nr_of_images = instagram.dataset.nr_of_images;
+      $.ajax({
+        type: "GET",
+        url: 'https://graph.instagram.com/me?fields=account_type,username,media&access_token=' + token,
+        crossDomain: true,
+        success: function (instagram) {
+          var images  = instagram.media.data;
+          var all_images = "";
+          var i = 0;
 
-	/**
-	 * All of the code for your public-facing JavaScript source
-	 * should reside in this file.
-	 *
-	 * Note: It has been assumed you will write jQuery code here, so the
-	 * $ function reference has been prepared for usage within the scope
-	 * of this function.
-	 *
-	 * This enables you to define handlers, for when the DOM is ready:
-	 *
-	 * $(function() {
-	 *
-	 * });
-	 *
-	 * When the window is loaded:
-	 *
-	 * $( window ).load(function() {
-	 *
-	 * });
-	 *
-	 * ...and/or other possibilities.
-	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
-	 */
+          images.forEach(image => {
+            if(nr_of_images <= i) {
+              return;
+            }
+            i++;
+            $.ajax({
+              type: "GET",
+              url: 'https://graph.instagram.com/' + image.id + '?fields=media_url,permalink&access_token=' + token,
+              crossDomain: true,
+              success: function (response) {
 
-})( jQuery );
+                all_images += '<a href="' + response.permalink + '" target="_blank">';
+                all_images += '<img src="' + response.media_url + '" alt="instagram image"  height="250" width="250">';
+                all_images += '</a>';
+
+                $(widget).find('.content').html(all_images);
+              },
+              dataType: "jsonp" //set to JSONP, is a callback
+            });
+          });
+        }
+      });
+    });
+  });
+
+})(jQuery);

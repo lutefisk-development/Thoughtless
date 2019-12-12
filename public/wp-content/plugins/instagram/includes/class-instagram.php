@@ -78,7 +78,8 @@ class Instagram {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-		$this->register_widget();
+        $this->register_widget();
+
 
 	}
 
@@ -188,7 +189,8 @@ class Instagram {
 		add_action('widgets_init', function(){
 			register_widget('Instagramwidget');
 		});
-	}
+    }
+
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
