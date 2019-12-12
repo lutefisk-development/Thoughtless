@@ -78,7 +78,7 @@ class Instagram {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-        $this->register_widget();
+    $this->register_widget();
 
 
 	}
