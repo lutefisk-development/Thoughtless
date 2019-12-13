@@ -75,7 +75,7 @@ class Instagramwidget extends WP_Widget{
 
     <!-- Shows the Images -->
     <div class="content text-center mt-3">
-      <span class="loading">Loading...</span>
+      <span class="loading"><?php _e('Loading...', 'instagram'); ?></span>
     </div>
 
     <?php
@@ -107,7 +107,7 @@ class Instagramwidget extends WP_Widget{
         $title = $instance['title'];
     }
     else {
-        $title = __('New title', 'instagram');
+        $title = __('New Title', 'instagram');
     }
     /**
      * The field where you can insert your Instagram token
@@ -116,7 +116,7 @@ class Instagramwidget extends WP_Widget{
       $instagram_token = $instance['instagram_token'];
     }
     else {
-      $instagram_token = __('New instagram_token', 'instagram');
+      $instagram_token = __('New Instagram Token', 'instagram');
     }
     /**
      * The field where you can insert your Number of images
@@ -125,7 +125,7 @@ class Instagramwidget extends WP_Widget{
         $nr_of_images = $instance['nr_of_images'];
     }
     else {
-        $nr_of_images = __('4', 'instagram');
+        $nr_of_images = '4';
     }
     /**
      * Change the Image size
@@ -175,7 +175,7 @@ class Instagramwidget extends WP_Widget{
       </p>
       <p>
         <label for="<?php echo $this->get_field_name('nr_of_images'); ?>">
-            <?php _e('Number of images:', 'instagram'); ?>
+            <?php _e('Number Of Images:', 'instagram'); ?>
         </label>
         <input class="widefat" id="<?php echo $this->get_field_id('nr_of_images'); ?>"
                 name="<?php echo $this->get_field_name('nr_of_images'); ?>" type="text" value="<?php echo esc_attr($nr_of_images); ?>" />
@@ -207,7 +207,7 @@ class Instagramwidget extends WP_Widget{
       // Link to get Instagram code used to create token
       ?>
       <a href="https://api.instagram.com/oauth/authorize?app_id=605693496868185&redirect_uri=<?php echo $url; ?>/wp-admin/widgets.php&scope=user_profile,user_media&response_type=code">
-        Create New Instagram Token
+        <?php _e('Create New Instagram Token', 'instagram'); ?>
       </a>
     <?php
   }
