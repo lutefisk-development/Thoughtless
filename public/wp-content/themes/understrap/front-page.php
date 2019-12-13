@@ -10,7 +10,7 @@ if(!defined('ABSPATH')) {
 get_header();
 get_template_part('global-templates/hero-frontpage');
 
-// REMEMBER TO COMMENT THIS OUT WHEN GOING LIVE! MIGHT NOPT WORK
+// REMEMBER TO COMMENT THIS OUT WHEN GOING LIVE! MIGHT NOT WORK
 echo do_shortcode("[wcps id='104']");
 ?>
 
