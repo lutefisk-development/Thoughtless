@@ -42,7 +42,6 @@ wp-content/themes/*
 wp-content/uploads/*
 wp-content/plugins/*
 
-
 # ignore all files starting with . or ~
 .*
 ~*
@@ -115,4 +114,6 @@ Thumbs.db
 !wp-content/uploads/sql/
 !wp-content/uploads/sql/*
 
+# Instagram plugin
+!wp-content/plugins/instagram
 
