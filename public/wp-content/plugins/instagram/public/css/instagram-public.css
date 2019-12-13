@@ -15,3 +15,7 @@
 .instimage:hover {
   transform: scale(1.05);
 }
+
+h3.widget-title {
+  text-align: center;
+}
