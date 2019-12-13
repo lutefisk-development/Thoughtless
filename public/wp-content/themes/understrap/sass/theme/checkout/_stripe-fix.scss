@@ -1,0 +1,15 @@
+
+/**
+* This fixes bug with input fields
+*/
+
+#stripe-payment-data {
+
+    .stripe-card-group {
+        width: 100%;
+    }
+    
+    .wc-stripe-elements-field {
+        width: 100%;
+    }
+}
