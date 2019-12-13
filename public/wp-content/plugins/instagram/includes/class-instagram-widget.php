@@ -74,7 +74,7 @@ class Instagramwidget extends WP_Widget{
     </div>
 
     <!-- Shows the Images -->
-    <div class="content text-center">
+    <div class="content text-center mt-3">
       <span class="loading">Loading...</span>
     </div>
 
