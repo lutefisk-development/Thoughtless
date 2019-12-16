@@ -3,12 +3,13 @@
 */
 
 #wrapper-footer {
-
+    background-color: $green;
     .site-footer {
-
+        
         .site-info {
-
+           
             .custom-footer {
+                color: $navbar-dark-color;
                 font-size: 1rem;
                 text-align: center;
             }

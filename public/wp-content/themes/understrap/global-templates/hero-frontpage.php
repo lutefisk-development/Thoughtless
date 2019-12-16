@@ -8,23 +8,27 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
+
+
+$imgArray = wp_get_attachment_image_src(get_field('hero-image'), 'hero-image');
+$link = get_field('hero-link');
+$heading = get_field('hero-heading');
+$sub_heading = get_field('hero-subheading');
+$button_text = get_field('hero-button-text');
+
 $hanna = '<a href="https://unsplash.com/@hannahmorgan7?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Hanna Morgan</a>';
 
 $unsplash = '<a href="https://unsplash.com/s/photos/fashion?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>';
-
-// Change to what ever the field is named on livesite!
-$imgArray = wp_get_attachment_image_src(get_field('hero-image'), 'hero-image');
-$link = get_field('hero-link');
 ?>
 
 <section id="wrapper-hero-frontpage" class="wrapper-hero">
 	<article class="hero">
-		<h1>here be heading</h1>
-		<h2>here be subheading</h2>
+		<h1><?php echo $heading; ?></h1>
+		<h2><?php echo $sub_heading; ?></h2>
 
 		<!-- button will be displayed only if admin has defined a valid link-->
 		<?php if($link) : ?>
-			<a href="" class="btn btn-primary"><?php echo the_field('hero-button-text'); ?></a>
+			<a href="<?php echo $link; ?>" class="btn btn-primary"><?php echo $button_text; ?></a>
 		<?php endif; ?>
 
 		<small>

@@ -11,9 +11,13 @@
 defined( 'ABSPATH' ) || exit;
 
 $container = get_theme_mod( 'understrap_container_type' );
-?>
 
-<?php get_template_part( 'sidebar-templates/sidebar', 'footerfull' ); ?>
+if(is_front_page(  )) {
+	get_template_part( 'sidebar-templates/sidebar', 'frontpagefooter' );
+} else {
+	get_template_part( 'sidebar-templates/sidebar', 'footerfull' );
+}
+?>
 
 <div class="wrapper" id="wrapper-footer">
 
@@ -53,4 +57,3 @@ $container = get_theme_mod( 'understrap_container_type' );
 </body>
 
 </html>
-

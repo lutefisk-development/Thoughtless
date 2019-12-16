@@ -19,39 +19,25 @@
         h2 {
             margin-bottom: 4rem;
         }
+
+        .btn {
+            background-color: $green;
+            border: none;
+            border-radius: 20px;
+        }
+
+        .btn:hover {
+            color: $lightgreen;
+            background-color: white;
+        }
         
         a {
             color: white;
-        }
-
-        a:hover {
-            color: $lightgreen;
+            text-decoration: none;
         }
 
         small {
             margin-top: auto;
         }
     }
-}
-
-#front-page-wrapper {
-    
-    .insta {
-        border: 3px solid red;
-        height: 300px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .best {
-        border: 3px solid red;
-        height: 750px;
-        max-width: 500px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
 }
