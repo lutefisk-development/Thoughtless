@@ -4,15 +4,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Instagram 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/instagram\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Tillmann <tillmann1970@gmail.com>\n"
+"Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2019-12-17T19:56:38+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.3.0\n"
+"PO-Revision-Date: 2019-12-17 20:02+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
 "X-Domain: instagram\n"
+"Language: sv_SE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.3.1; wp-5.2.4"
 
 #. Plugin Name of the plugin
 msgid "Instagram"
@@ -24,7 +27,7 @@ msgstr ""
 
 #. Description of the plugin
 msgid "This plugin shows images from Instagram"
-msgstr ""
+msgstr "Detta Plugin visar Bilder från Instagram"
 
 #. Author of the plugin
 msgid "Joakim Malmberg / Tillmann Weimer"
@@ -36,23 +39,23 @@ msgstr ""
 
 #: includes/class-instagram-widget.php:12
 msgid "A Widget which shows pictures from Instagram"
-msgstr ""
+msgstr "En Widget som visar bilder från Instagram"
 
 #: includes/class-instagram-widget.php:78
 msgid "Loading..."
-msgstr ""
+msgstr "laddar"
 
 #: includes/class-instagram-widget.php:96
 msgid "New Token:"
-msgstr ""
+msgstr "Ny Token"
 
 #: includes/class-instagram-widget.php:110
 msgid "New Title"
-msgstr ""
+msgstr "Ny Titel"
 
 #: includes/class-instagram-widget.php:119
 msgid "New Instagram Token"
-msgstr ""
+msgstr "Ny Instagram token"
 
 #: includes/class-instagram-widget.php:146
 msgid "App Id"
@@ -64,7 +67,7 @@ msgstr ""
 
 #: includes/class-instagram-widget.php:164
 msgid "Title:"
-msgstr ""
+msgstr "Titel"
 
 #: includes/class-instagram-widget.php:171
 msgid "Instagram Token:"
@@ -72,11 +75,11 @@ msgstr ""
 
 #: includes/class-instagram-widget.php:178
 msgid "Number Of Images:"
-msgstr ""
+msgstr "Antal Bilder"
 
 #: includes/class-instagram-widget.php:185
 msgid "Image Size:"
-msgstr ""
+msgstr "Bildens storlek"
 
 #: includes/class-instagram-widget.php:192
 msgid "App Id:"
@@ -88,4 +91,4 @@ msgstr ""
 
 #: includes/class-instagram-widget.php:210
 msgid "Create New Instagram Token"
-msgstr ""
+msgstr "Skapa en ny Instagram token"
