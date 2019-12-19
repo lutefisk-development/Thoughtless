@@ -1,0 +1,38 @@
+// Title Color Shop Page
+h1.woocommerce-products-header__title.page-title {
+	color: $lightgreen;
+}
+
+// Button Colors
+.btn-outline-primary,
+.single_add_to_cart_button.btn.btn-primary {
+	color: $lightgreen;
+	border-color: $lightgreen;
+	background-color: transparent;
+
+	&:hover {
+		background-color: $lightgreen;
+		border-color: $lightgreen;
+		color: white;
+	}
+}
+
+// Removes orderby/result-count/breadscrums
+select.orderby.custom-select,
+p.woocommerce-result-count {
+	display: none;
+}
+
+// Link colors
+a {
+	color: $lightgreen;
+
+	&:hover {
+		color: $lightgreen;
+	}
+}
+
+// Link hover
+li.product:hover {
+	transform: scale(1.05);
+}

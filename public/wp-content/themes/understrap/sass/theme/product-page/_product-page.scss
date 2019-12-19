@@ -1,0 +1,19 @@
+// Categories And Tags
+div.product_meta {
+	display: flex;
+	flex-direction: column;
+}
+
+// Product Amount Input
+input.input-text {
+	color: $lightgreen;
+	padding: .375rem .75rem;
+	border-radius: .25rem;
+	border: 1px solid $lightgreen;
+	box-shadow: none;
+}
+
+// Title Color Product Page
+h1.product_title.entry-title {
+	color: $lightgreen;
+}
