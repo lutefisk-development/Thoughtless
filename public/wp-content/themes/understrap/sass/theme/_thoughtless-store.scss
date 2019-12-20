@@ -3,13 +3,20 @@
 */
 
 @import "footer/add-custom-footer";
+@import "footer/edit-footer-link";
 
 @import "checkout/stripe-fix";
+@import "checkout/checkout";
 
 @import "generic/fonts";
 
 @import "front-page/hero";
 @import "front-page/wcps";
 
+@import "about/about";
+
+@import "cart/cart";
 
 @import "navbar/navbar";
+
+@import "widgets/widgets";
