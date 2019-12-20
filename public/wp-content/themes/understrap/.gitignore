@@ -8,6 +8,9 @@ understrap.zip
 
 dist
 
+css/theme*
+css/custom*
+
 dist-product
 
 npm-debug.log
