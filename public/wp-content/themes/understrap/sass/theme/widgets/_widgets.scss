@@ -1,0 +1,63 @@
+/**
+ * Adds a custom style to all widgets areas
+ */
+
+.widget {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        color: $lightgreen;
+    }
+
+    .price_slider_wrapper {
+        .price_slider {
+            background-color: $darkgreen!important;
+            .ui-slider-range {
+                background-color: $lightgreen;
+            }
+
+            span {
+                background-color: $lightgreen!important;
+            }
+        }
+    }
+
+    #searchform {
+        .input-group{
+            span {
+                input {
+                    background-color: $green;
+                }
+
+                input:hover {
+                    background-color: $lightgreen;
+                }
+
+                input:focus,
+                input:active {
+                    outline: none!important;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+}
+
+.widget_product_categories {
+    ul {
+        list-style-type: none;
+        li {
+            a {
+                color: $lightgreen;
+            }
+
+            a:hover {
+                color: $green;
+                text-decoration: none;
+            }
+        }
+    }
+}
