@@ -1,0 +1,89 @@
+/**
+ * Adds a custom style to the cart page
+ */
+
+ .entry-header {
+    h1 {
+        color: $lightgreen!important;
+    }
+}
+
+.cart-collaterals {
+    .cart_totals {
+        h2 {
+            color: $lightgreen!important;
+        }
+    }
+}
+
+.woocommerce-cart-form {
+    
+    box-shadow: 5px 10px 18px $lightgreen;
+
+    .product-name {
+        a {
+            color: $green;
+        }
+
+        a:hover {
+            color: $lightgreen;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+    }
+
+    .actions {
+        .coupon {
+            #coupon_code.input-text {
+                width: 115px!important;
+            }
+    
+            button {
+                border-color: $green;
+                color: $green;
+            }
+    
+            button:hover {
+                background-color: $green;
+                border-color: $navbar-dark-color;
+                color: $navbar-dark-color;
+            }
+        }
+
+        .btn-outline-primary {
+            border-color: $green;
+            color: $green;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: $green;
+            border-color: $navbar-dark-color;
+            color: $navbar-dark-color;
+        }
+    } 
+}
+
+.cart_totals {
+    .shop_table.shop_table_responsive {
+        box-shadow: 5px 10px 18px $lightgreen;
+    }
+}
+
+.wc-proceed-to-checkout {
+    a {
+        border-radius: 50px;
+        background-color: $green;
+        border: none;
+    }
+
+    a:hover {
+        background-color: $lightgreen;
+    }
+
+    // Removes blue border from default bootstrap setup.
+    a:focus,
+    a:active {
+        outline: none !important;
+        box-shadow: none;
+    }
+}
