@@ -1,0 +1,109 @@
+/**
+ * Adds a custom style to the checkout page
+ */
+
+.woocommerce-checkout {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        color: $lightgreen;
+    }
+
+    #customer_details {
+        box-shadow: 5px 10px 18px $lightgreen;
+        padding: 1rem 0;
+        border-radius: 5px;
+        background-color: $green;
+        color: $navbar-dark-color;
+
+        h3 {
+            color: $navbar-dark-color;
+        }
+    }
+
+    #order_review_heading {
+        margin: 2rem 0;
+    }
+
+    #order_review {
+        .shop_table {
+            box-shadow: 5px 10px 18px $lightgreen;
+            border-radius: 5px;
+            background-color: $green;
+            color: $navbar-dark-color;
+        }
+
+        tr {
+            td {
+                border-color: $navbar-dark-color;
+            }
+
+            th {
+                border-color: $navbar-dark-color;
+            }
+        }
+    }
+
+    #stripe-payment-data {
+        p {
+            a {
+                color: $green;
+            }
+
+            a:hover {
+                color: $lightgreen;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .woocommerce-checkout-payment {
+        box-shadow: 5px 10px 18px #888888;
+        .woocommerce-terms-and-conditions-wrapper {
+            .woocommerce-privacy-policy-text {
+                p {
+                    a {
+                        color: $green;
+                    }
+    
+                    a:hover {
+                        color: $lightgreen;
+                        text-decoration: none;
+                    }
+                }
+            }
+    
+            .woocommerce-form__label-for-checkbox {
+                span {
+                    a {
+                        color: $green;
+                    }
+    
+                    a:hover {
+                        color: $lightgreen;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        .place-order {
+            button {
+                border-radius: 50px;
+                background-color: $green;
+            }
+
+            button:hover {
+                background-color: $lightgreen;
+            }
+
+            button:focus,
+            button:active {
+                outline: none!important;
+                box-shadow: none;
+            }
+        }
+    }
+}
