@@ -1,0 +1,74 @@
+/**
+ * Adds a custom style to about-us page
+ */
+
+#wrapper-outlets {
+
+    #page-header {
+        text-align: center;
+        margin: 4rem 0 6rem 0;
+    }
+
+    .card {
+        background-color: $green;
+        box-shadow: 5px 10px 18px $lightgreen;
+        transition: transform .4s;
+
+        .card-body {
+
+            .card-title,
+            .card-text {
+                color: $navbar-dark-color;
+            }
+
+            .card-title {
+                margin: 0 0 2rem 0;
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .form-wrapper {
+
+        margin-top: 2rem;
+        .form {
+            box-shadow: 5px 10px 18px $lightgreen;
+            border-radius: 5px;
+            background-color: $green;
+    
+            p, input {
+                color: $navbar-dark-color;
+            }
+            padding: 1rem;
+    
+            .wpcf7-submit {
+                background-color: $lightgreen;
+                border-radius: 50px;
+                border-color: $darkgreen;
+                margin-top: .5rem;
+            }
+    
+            .wpcf7-submit:hover{
+                background-color: $darkgreen;
+                border-color: $lightgreen;
+            }
+        }
+    }
+    
+
+    // adds some margin between each card in mobile view:
+    @include media-breakpoint-down(md) {
+
+        .col-sm-12 {
+            margin-bottom: 1rem;
+        }
+
+        .col-sm-12:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
