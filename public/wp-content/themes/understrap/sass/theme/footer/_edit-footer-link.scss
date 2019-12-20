@@ -1,0 +1,16 @@
+/**
+ * edit the link in footer section
+ */
+
+.entry-footer {
+    .edit-link {
+        a {
+            color: $green;
+        }
+
+        a:hover {
+            color: $lightgreen;
+            text-decoration: none;
+        }
+    }
+}
