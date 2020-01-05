@@ -38,6 +38,11 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'THOUGHTLESS_GOOGLE_MAP_VERSION', '1.0.0' );
 
 /**
+ * Require Credentials
+ */
+require_once plugin_dir_path( __FILE__ ) . 'credentials.php';
+
+/**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-thoughtless-google-map-activator.php
  */
