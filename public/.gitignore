@@ -117,3 +117,6 @@ Thumbs.db
 # Instagram plugin
 !wp-content/plugins/instagram
 
+# Google maps plugin
+!wp-content/plugins/thoughtless-google-map
+
