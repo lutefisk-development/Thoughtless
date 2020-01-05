@@ -52,6 +52,9 @@ class Thoughtless_Google_Map_Public {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		// Function for registering the shortcodes used by the plugin
+		$this->define_shortcodes();
+
 	}
 
 	/**
@@ -94,6 +97,35 @@ class Thoughtless_Google_Map_Public {
 			'username' => THOUGHTLESS_GOOGLE_MAP_USERNAME,
 			'password' => THOUGHTLESS_GOOGLE_MAP_PASSWORD,
 		]);
+
+	}
+
+	/**
+	 * Register shortcodes for Thoughtless Google Map plugin
+	 */
+	public function define_shortcodes() {
+		add_shortcode('tgm', [$this, 'do_shortcode_tgm']);
+	}
+
+	/**
+	 * Method for handling the logic used by the shortcode 'tgm'
+	 */
+	public function do_shortcode_tgm($user_atts) {
+		// Default attributes
+		$default_atts = [
+			'title' => 'Thoughtless Map',
+		];
+
+		//Combine user attributes with known attributes and fill in defaults when needed
+		$atts = shortcode_atts($default_atts, $user_atts, 'tgm');
+
+		// Displays the map.
+		$output = '<div id="map-wrapper">';
+		$output .= '<h1>'. sprintf(__('%s', 'thoughtless-google-map'), $atts['title']) .'</h1>';
+		$output .= '<div id="thoughtless-map"></div>';
+		$output .= '</div>';
+
+		return $output;
 
 	}
 
