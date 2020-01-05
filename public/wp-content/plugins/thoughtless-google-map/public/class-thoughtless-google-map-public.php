@@ -84,19 +84,16 @@ class Thoughtless_Google_Map_Public {
 	 */
 	public function enqueue_scripts() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Thoughtless_Google_Map_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Thoughtless_Google_Map_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/thoughtless-google-map-public.js', array( 'jquery' ), $this->version, true );
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/thoughtless-google-map-public.js', array( 'jquery' ), $this->version, false );
+		// Enqueueing the script for google maps, with apikey and callback function
+		wp_enqueue_script('thoughtless-google-map', 'https://maps.googleapis.com/maps/api/js?key='. THOUGHTLESS_GOOGLE_MAP_API_KEY .'&callback=initMap', [], false, true);
+
+		// Localizing a script so we get access to variables from php into js
+		wp_localize_script( $this->plugin_name, 'thoughtless_google_map_credentials', [
+			'username' => THOUGHTLESS_GOOGLE_MAP_USERNAME,
+			'password' => THOUGHTLESS_GOOGLE_MAP_PASSWORD,
+		]);
 
 	}
 
