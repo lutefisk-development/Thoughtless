@@ -73,4 +73,40 @@ function initMap() {
 
 	}
 
+	// adding eventlistener, to wath for clicks on a certain outlet
+	document.body.addEventListener('click', e => {
+		if(e.target.parentElement.classList.contains('card')) {
+			zoomToOutlet(map, e);
+		}
+	});
+
+}
+
+function zoomToOutlet(map, e) {
+
+	// getting cords based on what outlet beeing clicked
+	var cords = {
+		lat: parseFloat(e.target.dataset.lat),
+		lng: parseFloat(e.target.dataset.lng)
+	}
+	
+	// create a new map, with closer zoom, and center around the cords
+	let thoughtlessMap = new google.maps.Map(map, {
+		zoom: 16,
+		center: cords,
+		disableDefaultUI: true,
+		gestureHandling: 'none',
+		zoomControl: false
+	})
+
+	// place a marker to show where outlet is located
+	let marker = new google.maps.Marker({
+		position: cords,
+		map: thoughtlessMap,
+		animation: google.maps.Animation.DROP
+	});
+
+	
+	// prevents default behaviour of the event
+	e.preventDefault();
 }
