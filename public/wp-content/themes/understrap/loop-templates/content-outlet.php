@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     <main class="card">
 
-        <div class="card-body">
+        <div class="card-body" data-lat="<?php the_field('store_latitude'); ?>" data-lng="<?php the_field('store_longitude'); ?>">
 
             <h1 class="card-title">
                 <?php the_title(); ?>

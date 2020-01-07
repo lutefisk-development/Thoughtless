@@ -39,7 +39,7 @@ $outlets = new WP_Query([
         <?php wp_reset_postdata(); ?>
 
         <!-- place shortcode for google maps here -->
-        <?php echo do_shortcode("[cm]"); ?>
+        <?php echo do_shortcode("[tgm]"); ?>
 
         <section class="row form-wrapper">
 
