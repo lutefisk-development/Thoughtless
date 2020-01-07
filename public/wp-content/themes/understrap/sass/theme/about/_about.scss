@@ -58,17 +58,13 @@
             }
         }
     }
-    
 
-    // adds some margin between each card in mobile view:
-    @include media-breakpoint-down(md) {
-
-        .col-sm-12 {
-            margin-bottom: 1rem;
-        }
-
-        .col-sm-12:last-child {
-            margin-bottom: 0;
-        }
+    .col-sm-12 {
+        margin-bottom: 1rem;
     }
+
+    .col-sm-12:last-child {
+        margin-bottom: 0;
+    }
+
 }
