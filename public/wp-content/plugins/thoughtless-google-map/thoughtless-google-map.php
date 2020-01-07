@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Thoughtless Google Map
  * Plugin URI:        https://thoughtlessstore.com
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Displays a map showing all Thoughtless Store outlets.
  * Version:           1.0.0
  * Author:            Thoughtless Developers
  * Author URI:        https://thoughtlessstore.com
