@@ -106,7 +106,27 @@ function zoomToOutlet(map, e) {
 		animation: google.maps.Animation.DROP
 	});
 
-	
+	// defines a variable that contains information on the element that was clicked
+	let contentString = '<div id="storeContent">' +
+		'<div id="siteNotice">' +
+		'</div>' + 
+		'<div class="body">' +
+		'<h1 class="storeName">' + e.target.children[0].innerText + '</h1>' +
+		'<p>' + e.target.children[1].innerText + '</p>' + 
+		'<p>' + e.target.children[2].innerText + '</p>' +
+		'</div>' +
+		'</div>';
+
+	// creates a infowindow with information stored in the contantString variable
+	let infoWindow = new google.maps.InfoWindow({
+		content: contentString,
+	});
+
+	// displays the infowindow once the marker is clicked
+	marker.addListener('click', () => {
+		infoWindow.open(thoughtlessMap, marker);
+	});
+
 	// prevents default behaviour of the event
 	e.preventDefault();
 }
